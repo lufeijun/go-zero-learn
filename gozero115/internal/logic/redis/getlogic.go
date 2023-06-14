@@ -1,8 +1,7 @@
-package cache
+package redis
 
 import (
 	"context"
-	"fmt"
 
 	"demo/gozero115/internal/svc"
 	"demo/gozero115/internal/types"
@@ -11,32 +10,31 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type IndexLogic struct {
+type GetLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewIndexLogic(ctx context.Context, svcCtx *svc.ServiceContext) *IndexLogic {
-	return &IndexLogic{
+func NewGetLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetLogic {
+	return &GetLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *IndexLogic) Index() (resp *types.Response, err error) {
+func (l *GetLogic) Get(req *types.RedisGet) (resp *types.Response, err error) {
 	// todo: add your logic here and delete this line
+
 	resp = funcs.ResponseInit()
 
-	return
-}
+	key := req.Name
+	if key == "" {
+		key = "name"
+	}
 
-func getData() (msg string) {
-
-	fmt.Println("get-data")
-
-	msg = "ok"
+	resp.Data = key
 
 	return
 }

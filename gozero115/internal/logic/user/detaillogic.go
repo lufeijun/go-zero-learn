@@ -26,9 +26,5 @@ func NewDetailLogic(ctx context.Context, svcCtx *svc.ServiceContext) *DetailLogi
 func (l *DetailLogic) Detail() (resp *types.Response, err error) {
 	// todo: add your logic here and delete this line
 
-	resp = new(types.Response)
-
-	resp.Message = "detail"
-
 	return
 }

@@ -7,6 +7,8 @@ import (
 type Config struct {
 	rest.RestConf
 
+	MysqlDsn string
+
 	Jipeng string
 
 	JpRedisConfig JpRedis

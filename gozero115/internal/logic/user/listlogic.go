@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"fmt"
 
 	"demo/gozero115/internal/svc"
 	"demo/gozero115/internal/types"
@@ -15,6 +16,10 @@ type ListLogic struct {
 	svcCtx *svc.ServiceContext
 }
 
+func init() {
+	fmt.Println("ListLogic init")
+}
+
 func NewListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ListLogic {
 	return &ListLogic{
 		Logger: logx.WithContext(ctx),
@@ -25,8 +30,6 @@ func NewListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ListLogic {
 
 func (l *ListLogic) List() (resp *types.Response, err error) {
 	// todo: add your logic here and delete this line
-	resp = new(types.Response)
 
-	resp.Message = "list"
 	return
 }

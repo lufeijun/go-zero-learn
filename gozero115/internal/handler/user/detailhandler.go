@@ -5,7 +5,6 @@ import (
 
 	"demo/gozero115/internal/logic/user"
 	"demo/gozero115/internal/svc"
-
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
@@ -14,9 +13,9 @@ func DetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		l := user.NewDetailLogic(r.Context(), svcCtx)
 		resp, err := l.Detail()
 		if err != nil {
-			httpx.Error(w, err)
+			httpx.ErrorCtx(r.Context(), w, err)
 		} else {
-			httpx.OkJson(w, resp)
+			httpx.OkJsonCtx(r.Context(), w, resp)
 		}
 	}
 }

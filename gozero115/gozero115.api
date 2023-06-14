@@ -10,49 +10,11 @@ type Response {
 
 import (
 	"api/user.api"
-	"api/logger.api"
+	"api/redis.api"
+	"api/mysql.api"
 )
 
 service gozero115-api {
 	@handler IndexHandler
 	get / returns (Response)
-
-}
-
-// 分组
-@server(
-	// jwt: Auth
-	group: group
-	// middleware: AuthMiddleware
-	prefix: group
-)
-service gozero115-api{
-	@handler IndexHandler
-	get / returns (Response)
-}
-
-// cache
-@server(
-	// jwt: Auth
-	group: cache
-	// middleware: AuthMiddleware
-	prefix: cache
-)
-service gozero115-api{
-	@handler IndexHandler
-	get / returns (Response)
-}
-
-@server(
-	group: redis
-
-	prefix: redis
-)
-service gozero115-api {
-	@handler IndexHandler
-	get / returns (Response)
-
-	@handler OneHandler
-	get /one returns (Response)
-
 }

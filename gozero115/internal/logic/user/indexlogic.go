@@ -25,8 +25,6 @@ func NewIndexLogic(ctx context.Context, svcCtx *svc.ServiceContext) *IndexLogic 
 
 func (l *IndexLogic) Index() (resp *types.Response, err error) {
 	// todo: add your logic here and delete this line
-	resp = new(types.Response)
 
-	resp.Message = "index"
 	return
 }

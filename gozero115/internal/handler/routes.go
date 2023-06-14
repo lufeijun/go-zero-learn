@@ -4,9 +4,7 @@ package handler
 import (
 	"net/http"
 
-	cache "demo/gozero115/internal/handler/cache"
-	group "demo/gozero115/internal/handler/group"
-	logger "demo/gozero115/internal/handler/logger"
+	mysql "demo/gozero115/internal/handler/mysql"
 	redis "demo/gozero115/internal/handler/redis"
 	user "demo/gozero115/internal/handler/user"
 	"demo/gozero115/internal/svc"
@@ -23,44 +21,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: IndexHandler(serverCtx),
 			},
 		},
-	)
-
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodGet,
-				Path:    "/",
-				Handler: group.IndexHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/group"),
-	)
-
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodGet,
-				Path:    "/",
-				Handler: cache.IndexHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/cache"),
-	)
-
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodGet,
-				Path:    "/",
-				Handler: redis.IndexHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/one",
-				Handler: redis.OneHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/redis"),
 	)
 
 	server.AddRoutes(
@@ -87,11 +47,32 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
-				Method:  http.MethodGet,
-				Path:    "/",
-				Handler: logger.IndexHandler(serverCtx),
+				Method:  http.MethodPost,
+				Path:    "/get",
+				Handler: redis.GetHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/get2",
+				Handler: redis.GettwoHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/set",
+				Handler: redis.SetHandler(serverCtx),
 			},
 		},
-		rest.WithPrefix("/logger"),
+		rest.WithPrefix("/redis"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/",
+				Handler: mysql.IndexHandler(serverCtx),
+			},
+		},
+		rest.WithPrefix("/mysql"),
 	)
 }

@@ -13,9 +13,9 @@ func IndexHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		l := user.NewIndexLogic(r.Context(), svcCtx)
 		resp, err := l.Index()
 		if err != nil {
-			httpx.Error(w, err)
+			httpx.ErrorCtx(r.Context(), w, err)
 		} else {
-			httpx.OkJson(w, resp)
+			httpx.OkJsonCtx(r.Context(), w, resp)
 		}
 	}
 }

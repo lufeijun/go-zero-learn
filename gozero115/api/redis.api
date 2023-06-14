@@ -1,0 +1,33 @@
+type RedisGet {
+	Name string `json:"name,optional"`
+}
+
+type RedisGet2 {
+	Name string `form:"name,optional"`
+}
+
+type RedisSet {
+  Key string  `form:"key,optional"`
+  Value string `form:"value,optional"`
+}
+
+@server(
+	// jwt: Auth
+	group: redis
+	// middleware: AuthMiddleware
+	prefix: redis
+)
+service gozero115-api{
+	@handler GetHandler
+	post /get (RedisGet) returns (Response)
+	
+  
+  @handler GettwoHandler
+	post /get2 (RedisGet2) returns (Response)
+
+  @handler SetHandler
+	post /set (RedisSet) returns (Response)
+
+
+
+}

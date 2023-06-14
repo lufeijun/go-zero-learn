@@ -10,3 +10,16 @@ type Response struct {
 	Message string      `json:"message"`
 	Data    interface{} `json:"data"`
 }
+
+type RedisGet struct {
+	Name string `json:"name,optional"`
+}
+
+type RedisGet2 struct {
+	Name string `form:"name,optional"`
+}
+
+type RedisSet struct {
+	Key   string `form:"key,optional"`
+	Value string `form:"value,optional"`
+}

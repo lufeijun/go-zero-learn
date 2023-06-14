@@ -13,9 +13,9 @@ func ListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		l := user.NewListLogic(r.Context(), svcCtx)
 		resp, err := l.List()
 		if err != nil {
-			httpx.Error(w, err)
+			httpx.ErrorCtx(r.Context(), w, err)
 		} else {
-			httpx.OkJson(w, resp)
+			httpx.OkJsonCtx(r.Context(), w, resp)
 		}
 	}
 }

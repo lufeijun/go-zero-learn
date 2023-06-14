@@ -1,10 +1,10 @@
 @server(
 	// jwt: Auth
-	group: logger
+	group: mysql
 	// middleware: AuthMiddleware
-	prefix: logger
+	prefix: mysql
 )
 service gozero115-api{
 	@handler IndexHandler
-	get / returns (Response)
+	post / returns (Response)
 }
