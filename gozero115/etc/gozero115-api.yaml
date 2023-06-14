@@ -3,6 +3,14 @@ Host: 0.0.0.0
 Port: 8888
 
 
+Log :
+  Mode: "file"
+  Level: "debug"
+  MaxSize: 100
+  MaxBackups: 14
+  KeepDays: 7
+  Rotation: "daily"
+
 # Redis: 
 # -Host: "192.168.0.87:6379"
 #  Pass: "123456"
@@ -10,7 +18,7 @@ Port: 8888
 
 
 JpRedisConfig :
-  Host: 127.0.0.1:6379
+  Host: 192.168.0.87:6379
   Pass: "123456"
   Type: node
 

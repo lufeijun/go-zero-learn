@@ -1,0 +1,10 @@
+@server(
+	// jwt: Auth
+	group: logger
+	// middleware: AuthMiddleware
+	prefix: logger
+)
+service gozero115-api{
+	@handler IndexHandler
+	get / returns (Response)
+}

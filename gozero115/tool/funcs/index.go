@@ -5,7 +5,9 @@ import (
 )
 
 func ResponseInit() (res *types.Response) {
-	res = new(types.Response)
+	// res = new(types.Response)
+	res = &types.Response{}
+
 	res.Status = 0
 	res.Message = "success"
 	// res.Data = make(map[string]interface{}, 0)

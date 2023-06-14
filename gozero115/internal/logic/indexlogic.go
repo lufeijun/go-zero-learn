@@ -22,6 +22,7 @@ type IndexLogic struct {
 }
 
 func NewIndexLogic(ctx context.Context, svcCtx *svc.ServiceContext) *IndexLogic {
+	fmt.Println("NewIndexLogic")
 	return &IndexLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
@@ -29,12 +30,14 @@ func NewIndexLogic(ctx context.Context, svcCtx *svc.ServiceContext) *IndexLogic 
 	}
 }
 
+func init() {
+	fmt.Println("init")
+}
+
 func (l *IndexLogic) Index() (resp *types.Response, err error) {
 	// todo: add your logic here and delete this line
 	// var a interface{}
 	resp = funcs.ResponseInit()
-
-	start := time.Now().UnixMicro()
 
 	// time.Sleep(time.Second)
 
@@ -42,7 +45,7 @@ func (l *IndexLogic) Index() (resp *types.Response, err error) {
 	fmt.Println(unsafe.Sizeof(resp))
 	fmt.Println(unsafe.Sizeof(*resp))
 
-	resp.Data = time.Now().UnixMicro() - start
+	resp.Data = "hello world gozero" + time.Now().Format("2006-01-02 15:04:05")
 
 	return
 }

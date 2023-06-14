@@ -10,12 +10,13 @@ type Response {
 
 import (
 	"api/user.api"
+	"api/logger.api"
 )
 
 service gozero115-api {
 	@handler IndexHandler
 	get / returns (Response)
-	
+
 }
 
 // 分组
@@ -44,10 +45,14 @@ service gozero115-api{
 
 @server(
 	group: redis
-	
+
 	prefix: redis
 )
 service gozero115-api {
 	@handler IndexHandler
 	get / returns (Response)
+
+	@handler OneHandler
+	get /one returns (Response)
+
 }
