@@ -3,13 +3,18 @@ Host: 0.0.0.0
 Port: 8888
 
 
-# Log :
-#   Mode: "file"
-#   Level: "debug"
-#   MaxSize: 100
-#   MaxBackups: 14
-#   KeepDays: 7
-#   Rotation: "daily"
+Log :
+  Mode: "file"
+  Level: "debug"
+  MaxSize: 100
+  MaxBackups: 7
+  KeepDays: 2
+  Rotation: "daily"
+
+Prometheus:
+  Host: 0.0.0.0
+  Path: "/metrics"
+  Port: 9999
 
 # Redis: 
 # -Host: "192.168.0.87:6379"
